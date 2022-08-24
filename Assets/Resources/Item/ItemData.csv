@@ -1,0 +1,6 @@
+index,name,target,subject,value,time,description
+1,회복제,Player,Health,2,0,플레이어의 체력 2 회복
+2,활력제,Player,Speed,5,30,플레이어의 이동속도 30초간 5 증가
+3,마네킹,Field,Health,10,0,좀비 유인용 마네킹 설치
+4,올가미,Enemy,Speed,-3,30,가장 가까운 좀비 이동속도 30초간 3 감소
+5,배터리,Player,Battery,40,0,배터리 게이지 40% 회복
