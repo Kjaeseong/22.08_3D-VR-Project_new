@@ -240,8 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f483dd152e65e34eb8730a3492bab26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WalkSpeed: 4
-  RunSpeed: 8
+  WalkSpeed: 7
+  RunSpeed: 17
   AttackCoolTime: 1.5
   AttackDamage: 1
   NeffTime: 0

@@ -551,6 +551,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlantSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Stump
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Tree1
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Tree2
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Tree3
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Flower
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Grass1
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Grass2
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822070630834929773, guid: 6f50958c0b351574494937e7ee49fa6a,
+        type: 3}
+      propertyPath: Quantity_Mushroom
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5822070630834929778, guid: 6f50958c0b351574494937e7ee49fa6a,
         type: 3}
       propertyPath: m_RootOrder
