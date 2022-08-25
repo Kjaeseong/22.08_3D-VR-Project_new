@@ -9,23 +9,39 @@ public class StartTip : MonoBehaviour
     public GameObject ItemBox;
     public GameObject TargetTipBox;
     public GameObject InventoryUI;
+    public GameObject ControllKey;
 
-    private bool _step1 = true;
+    private bool _step0 = true;
+    private bool _step1 = false;
     private bool _step2 = false;
     private bool _step3 = false;
 
     private void Update()
     {
-
-        Step1();
-        Step2();
+        Time.timeScale = 0;
         Step3();
+        Step2();
+        Step1();
+        Step0();
 
     }
 
     void Step0()
-    { 
-        
+    {
+        if (_step0 == true)
+        {
+            ControllKey.SetActive(true);
+        }
+        else
+        {
+            ControllKey.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && _step0 == true)
+        {
+            _step0 = false;
+            _step1 = true;
+        }
     }
 
     void Step1()
@@ -68,7 +84,7 @@ public class StartTip : MonoBehaviour
 
     void Step3()
     {
-        if (_step2 == true)
+        if (_step3 == true)
         {
             TargetTipBox.SetActive(true);
         }
@@ -80,6 +96,7 @@ public class StartTip : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && _step3 == true)
         {
             _step3 = false;
+            Time.timeScale = 1;
             gameObject.SetActive(false);
         }
     }

@@ -6,6 +6,7 @@ public class ExitDoor : MonoBehaviour
 {
     public bool Visited = false;
     public bool MissionAllClear = false;
+    public bool InsideCollider;
 
     private Outline _outline;
     public Transform RightDoor;
@@ -15,6 +16,9 @@ public class ExitDoor : MonoBehaviour
     public BuildingSpawner _spawner;
     private GameObject _player;
 
+    public DoorScreen Screen;
+    public GameObject ScreenObject;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,18 +27,27 @@ public class ExitDoor : MonoBehaviour
             _player = GetComponent<GameObject>();
 
             _spawner.PhaseStep = 1;
+            Screen.InsideCollider = true;
+            ScreenObject.SetActive(true);
         }
 
         if (Visited == false && MissionAllClear == false)
         {
             Visited = true;
             _spawner.VisitedExit = true;
-
         }
 
         if (Visited == true && MissionAllClear == true)
         {
             GameManager.Instance.StageClear = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Screen.InsideCollider = false;
         }
     }
 
@@ -47,10 +60,9 @@ public class ExitDoor : MonoBehaviour
 
     private void Update()
     {
-        VisitPlayer();
         ActiveOutline();
         DoorOpen();
-
+        Onscreen();
     }
 
     void ActiveOutline()
@@ -65,12 +77,10 @@ public class ExitDoor : MonoBehaviour
         }
     }
 
-    void VisitPlayer()
+    void Onscreen()
     {
-
-
-
-
+        Screen.Visited = Visited;
+        Screen.MissionAllClear = MissionAllClear;
     }
 
     void DoorOpen()

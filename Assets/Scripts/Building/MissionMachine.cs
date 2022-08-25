@@ -15,8 +15,13 @@ public class MissionMachine : MonoBehaviour
     public GameObject _pointer;
     public ExitDoor ExitDoor;
     public BuildingSpawner _spawner;
+    public GameObject Screen;
+    public MachineScreen ScreenScript;
+    public GameObject Scope;
 
-    private bool _insideCollider;
+    public bool InsideCollider;
+    public bool OnScreen;
+
     private PlayerStatus _player;
 
     private void OnTriggerEnter(Collider other)
@@ -24,12 +29,12 @@ public class MissionMachine : MonoBehaviour
         if (other.name == "Player")
         {
             _player = other.GetComponent<PlayerStatus>();
-            _insideCollider = true;
+            InsideCollider = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        _insideCollider = false;
+        InsideCollider = false;
     }
 
 
@@ -45,6 +50,7 @@ public class MissionMachine : MonoBehaviour
         Mission();
 
         ActiveOutline();
+        MachineScreen();
     }
 
     void Mission()
@@ -70,7 +76,7 @@ public class MissionMachine : MonoBehaviour
 
     void Operation()
     {
-        if (_insideCollider == true && _player.OperationMachine == true)
+        if (InsideCollider == true && _player.OperationMachine == true)
         {
             MissionStart = true;
         }
@@ -88,10 +94,32 @@ public class MissionMachine : MonoBehaviour
         if (MissionClear == 1)
         {
             _outLine.enabled = false;
+            Scope.SetActive(false);
         }
         else
         {
             _outLine.enabled = true;
+            Scope.SetActive(true);
+        }
+    }
+
+    void MachineScreen()
+    {
+        if (InsideCollider == true)
+        {
+            if (MissionStart == false && MissionClear == 0)
+            {
+                Screen.SetActive(true);
+                ScreenScript.OnScreen = true;
+            }
+            else if(MissionStart == true || MissionClear == 1)
+            {
+                ScreenScript.OnScreen = false;
+            }
+        }
+        else 
+        {
+            ScreenScript.OnScreen = false;
         }
     }
 

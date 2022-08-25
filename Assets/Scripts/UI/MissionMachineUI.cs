@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class MissionMachineUI : MonoBehaviour
 {
     public MissionMachine _machine;
-    public GameObject _gauge;
     public Image _image;
     
 
