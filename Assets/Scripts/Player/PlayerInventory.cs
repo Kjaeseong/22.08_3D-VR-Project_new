@@ -166,17 +166,14 @@ public class PlayerInventory : MonoBehaviour
         {
             case "Health":
                 _player.Health += Value;
-                _player.BuffOn = true;
                 break;
             case "Speed":
                 _player.WalkSpeed += Value;
                 _player.RunSpeed += Value;
                 _player.BuffTime = Time;
-                _player.BuffOn = true;
                 break;
             case "Battery":
                 _player.Battery += Value;
-                _player.BuffOn = true;
                 break;
         }
     }

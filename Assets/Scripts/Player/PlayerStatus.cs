@@ -29,6 +29,7 @@ public class PlayerStatus : MonoBehaviour
 
 
 
+
     public float MinDistance;
     public int IsScary = 0;
 
@@ -55,8 +56,7 @@ public class PlayerStatus : MonoBehaviour
         _battery_default = Battery;
         _walkSpeed_default = WalkSpeed;
         _runSpeed_default = RunSpeed;
-
-}
+    }
 
     private void Update()
     {
@@ -141,6 +141,7 @@ public class PlayerStatus : MonoBehaviour
         if (BuffTime > 0)
         {
             BuffTime -= Time.deltaTime;
+            BuffOn = true;
         }
         
         if (BuffTime <= 0 && BuffOn == true)
