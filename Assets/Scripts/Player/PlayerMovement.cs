@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
             Walk();
             TurnOnFlash();
         }
+        PositionClamp(-499f, 499f);
     }
 
     void Walk()
@@ -73,5 +74,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _player.FlashOn = false;
         }
+    }
+
+    void PositionClamp(float min, float max)
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min, max), transform.position.y, Mathf.Clamp(transform.position.z, min, max));
     }
 }

@@ -32,6 +32,8 @@ public class ZombieMovement : MonoBehaviour
             LockOn = false;
             IdleMove();
         }
+
+        PositionClamp(-499f, 499f);
     }
 
     void RunToTarget()
@@ -74,6 +76,12 @@ public class ZombieMovement : MonoBehaviour
             _turn = 0f;
         }
         
+    }
+
+    void PositionClamp(float min, float max)
+    {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min, max), transform.position.y, Mathf.Clamp(transform.position.z, min, max));
+    
     }
 
 }
