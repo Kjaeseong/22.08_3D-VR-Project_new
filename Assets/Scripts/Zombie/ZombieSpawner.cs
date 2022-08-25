@@ -38,7 +38,6 @@ public class ZombieSpawner : MonoBehaviour
                 temp++;
             }
         }
-        Debug.Log("좀비 풀 완료");
 
     }
 

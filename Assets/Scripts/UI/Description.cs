@@ -16,6 +16,5 @@ public class Description : MonoBehaviour
     private void Update()
     {
         Print.text = ItemDescription;
-        Debug.Log($"아이템 설명 : {ItemDescription}");
     }
 }

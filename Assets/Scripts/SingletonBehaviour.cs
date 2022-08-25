@@ -20,7 +20,6 @@ public class SingletonBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 
     public void Awake()
     {
-        Debug.Log("Singleton Awake");
         if (_instance != null)
         {   
             if (_instance != this)

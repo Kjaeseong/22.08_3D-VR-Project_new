@@ -107,8 +107,6 @@ public class InventoryUI : MonoBehaviour
         DescriptionGroup.SetActive(true);
         DescriptionTitle.ItemName = ItemInfo[index].Name;
         Description.ItemDescription = ItemInfo[index].Discription;
-        Debug.Log($"부모객체 이름 : {ItemInfo[index].Name}");
-        Debug.Log($"부모객체 설명 : {ItemInfo[index].Discription}");
     }
     
 }

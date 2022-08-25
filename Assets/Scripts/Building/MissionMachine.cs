@@ -25,13 +25,11 @@ public class MissionMachine : MonoBehaviour
         {
             _player = other.GetComponent<PlayerStatus>();
             _insideCollider = true;
-            Debug.Log("콜라이더 내 플레이어 감지");
         }
     }
     private void OnTriggerExit(Collider other)
     {
         _insideCollider = false;
-        Debug.Log("플레이어 떨어짐");
     }
 
 

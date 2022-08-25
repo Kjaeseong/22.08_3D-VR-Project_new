@@ -39,8 +39,6 @@ public class PlayerStatus : MonoBehaviour
     public bool OperationMachine = false;
 
 
-    private Effects _fadeEffect;
-    private ShaderEffect_CorruptedVram _glitchEffect;
 
     public GameObject FlashLight;
 
@@ -48,8 +46,6 @@ public class PlayerStatus : MonoBehaviour
 
     private void Start()
     {
-        _fadeEffect = GetComponentInChildren<Effects>();
-        _glitchEffect = GetComponentInChildren<ShaderEffect_CorruptedVram>();
         GameManager.Instance.GameOver = false;
         GameManager.Instance.StageClear = false;
 
@@ -78,8 +74,6 @@ public class PlayerStatus : MonoBehaviour
         PlayerAlive();
 
         StatusReset();
-        MediaEffectFade();
-        GlitchEffect();
         Operation();
     }
 
@@ -128,62 +122,6 @@ public class PlayerStatus : MonoBehaviour
         }
         CurrentRX = BePursuedRX;
         BePursuedRX = false;
-    }
-
-    void MediaEffectFade()
-    {
-        if (Health < HealthMax)
-        {
-            _fadeEffect.enabled = true;
-            switch (Health)
-            {
-                case 4:
-                    _fadeEffect.effectType = Fx.sepia;
-                    _fadeEffect.styleStrength = 0.02f;
-                    break;
-                case 3:
-                    _fadeEffect.effectType = Fx.sepia;
-                    _fadeEffect.styleStrength = 0.04f;
-                    break;
-                case 2:
-                    _fadeEffect.effectType = Fx.sepia;
-                    _fadeEffect.styleStrength = 0.08f;
-                    break;
-                case 1:
-                    _fadeEffect.effectType = Fx.greyscale;
-                    _fadeEffect.styleStrength = 1;
-                    break;
-                case 0:
-                    _fadeEffect.effectType = Fx.greyscale;
-                    _fadeEffect.styleStrength = 1;
-                    break;
-            }
-        }
-        else
-        {
-            _fadeEffect.enabled = false;
-        }
-
-        if (IsDie)
-        {
-            _fadeEffect.brightness -= 2 * Time.deltaTime;
-        }
-    }
-
-    void GlitchEffect()
-    {
-        if (IsScary == 0)
-        {
-            _glitchEffect.enabled = false;
-        }
-        else
-        {
-            _glitchEffect.enabled = true;
-            
-            float Max = IsScary * 0.2f;
-            _glitchEffect.shift = Random.Range(-Max, Max);
-        }
-
     }
 
     void Operation()

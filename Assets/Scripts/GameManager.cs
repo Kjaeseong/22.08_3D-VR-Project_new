@@ -23,7 +23,6 @@ public class GameManager : SingletonBehaviour<GameManager>
     void Awake()
     {
         base.Awake();
-        Debug.Log("GameManager Awake");
         RoadGameDate();
     }
 

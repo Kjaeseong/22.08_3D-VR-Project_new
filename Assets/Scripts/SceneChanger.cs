@@ -9,7 +9,6 @@ public class SceneChanger : SingletonBehaviour<SceneChanger>
     void Awake()
     {
         base.Awake();
-        Debug.Log("SceneChanger Awake");
     }
 
 

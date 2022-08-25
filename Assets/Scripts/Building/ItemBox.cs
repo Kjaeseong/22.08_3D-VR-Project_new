@@ -14,7 +14,6 @@ public class ItemBox : MonoBehaviour
             if (_inventory.list.Count < _inventory.Size + 1)
             {
                 _inventory.list.Add(Random.Range(1, 6));
-                Debug.Log(_inventory.list[0]);
                 gameObject.SetActive(false);
             }
         }

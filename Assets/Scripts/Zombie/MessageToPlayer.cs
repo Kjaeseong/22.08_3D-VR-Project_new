@@ -63,7 +63,6 @@ public class MessageToPlayer : MonoBehaviour
             if (_detection.SelectTarget.name == "Player")
             {
                 _player.Health -= _zombie.AttackDamage;
-                Debug.Log($"플레이어 체력 : {_player.Health}");
             }
             if (_detection.SelectTarget.name == "Mannequin")
             {
