@@ -8,6 +8,8 @@ public class InGameUI : MonoBehaviour
     public PlayerStatus _player;
     public PlayerInput _input;
 
+    public GameObject StartTip;
+    public GameObject Parameta;
     public GameObject Pause;
     public GameObject GameEnd;
 
@@ -25,31 +27,31 @@ public class InGameUI : MonoBehaviour
 
         Pause.SetActive(false);
         GameEnd.SetActive(false);
-
     }
 
     private void Update()
     {
-
-
-
-        if (_input.P)
+        if (StartTip.activeSelf == false)
         {
-            Pause.SetActive(true);
-        }
+            Parameta.SetActive(true);
 
-        if (GameManager.Instance.GameOver == true)
-        {
-            GameEnd.SetActive(true);
-            GameOver = true;
-        }
+            if (_input.P)
+            {
+                Pause.SetActive(true);
+            }
 
-        if (GameManager.Instance.StageClear == true)
-        {
-            GameEnd.SetActive(true);
-            StageClear = true;
-        }
+            if (GameManager.Instance.GameOver == true)
+            {
+                GameEnd.SetActive(true);
+                GameOver = true;
+            }
 
+            if (GameManager.Instance.StageClear == true)
+            {
+                GameEnd.SetActive(true);
+                StageClear = true;
+            }
+        }
         
     }
 }
