@@ -11,7 +11,7 @@ public class Buff : MonoBehaviour
     public PlayerStatus _player;
     public ZombieStatus _zombie;
 
-    public int Index;
+    private int _posStep;
     public string _target;
     public float _resetTime;
     public Image _image;
@@ -34,6 +34,7 @@ public class Buff : MonoBehaviour
 
     private void Update()
     {
+
         if (_loadData == false)
         { 
             LoadData();
@@ -45,17 +46,34 @@ public class Buff : MonoBehaviour
             GetZombie();
             ActiveEffect();
         }
+
+        IconPosition();
         ClearBuff();
+    }
+
+    void IconPosition()
+    {
+        for (int i = 0; i < Bufflist._bufflist.Count; i++)
+        {
+            if (Bufflist._bufflist[i].name == gameObject.name)
+            {
+                _posStep = i + 1;
+            }
+        }
+        _transform.position = new Vector3(_posStep * 100f, 10f, 0f);
     }
 
     void LoadData()
     {
+        _image.sprite = Bufflist.IconFile[Bufflist.Index - 1];
         _target = Bufflist.Target;
         _resetTime = Bufflist.ResetTime;
         _health = Bufflist.Health;
         _battery = Bufflist.Battery;
         _walkSpeed = Bufflist.WalkSpeed;
         _runSpeed = Bufflist.RunSpeed;
+        _image = Bufflist.image;
+
         _loadData = true;
         if (_resetTime > 1)
         {
@@ -65,8 +83,6 @@ public class Buff : MonoBehaviour
 
     void GetPlayer()
     {
-        _transform.position = new Vector3(Bufflist._bufflist.Count * 10f, 10f, 0f);
-
         _player = GetComponentInParent<PlayerStatus>();
 
     }

@@ -8,6 +8,10 @@ public class BuffList : MonoBehaviour
     public GameObject Buff;
     public List<GameObject> _bufflist = new List<GameObject>();
 
+    public int TotalItem;
+    public Sprite[] IconFile;
+    private bool LoadIcon;
+
     public string Name;
 
     public int Index;
@@ -22,6 +26,18 @@ public class BuffList : MonoBehaviour
 
     public bool buffActive;
 
+    private void Start()
+    {
+        if (LoadIcon == false)
+        {
+            IconFile = new Sprite[TotalItem];
+            for (int i = 0; i < TotalItem; i++)
+            {
+                IconFile[i] = Resources.Load<Sprite>("Item/Icon" + (i + 1).ToString());
+            }
+            LoadIcon = true;
+        }
+    }
 
     private void Update()
     {
@@ -30,6 +46,7 @@ public class BuffList : MonoBehaviour
             CreateBuff();
         }
     }
+
 
     void CreateBuff()
     {

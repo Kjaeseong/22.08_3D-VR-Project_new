@@ -30,12 +30,18 @@ public class PlayerInventory : MonoBehaviour
     
     private void Awake()
     {
+
+    }
+
+    private void Start()
+    {
         BeforeActive = Instantiate(FieldItemPrefab) as GameObject;
         BeforeActive.transform.parent = gameObject.transform;
         BeforeActive.SetActive(false);
 
         data = CSVReader.Read("Item/ItemData");
         TotalItem = data.Count;
+        Bufflist.TotalItem = TotalItem;
 
         for (int i = 0; i < 5; i++)
         {
@@ -148,6 +154,8 @@ public class PlayerInventory : MonoBehaviour
         {
             Bufflist.Target = ItemData[selectItem].Target;
             Bufflist.ResetTime = ItemData[selectItem].ActTime;
+            Bufflist.Index = ItemData[selectItem].Index;
+
             switch (ItemData[selectItem].Subject)
             {
                 case "Health":
@@ -187,6 +195,7 @@ public class PlayerInventory : MonoBehaviour
                 FieldItem.name = name;
                 FieldItem.tag = "FieldItem";
                 FieldItem.transform.position = new Vector3(_player.transform.localPosition.x, 1f, _player.transform.localPosition.z + 5f);
+                Debug.Log(FieldItem);
 
                 FieldItemStatus = FieldItem.GetComponent<FieldItemStatus>();
                 FieldItemStatus.Health = value;
