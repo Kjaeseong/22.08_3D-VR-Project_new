@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
     public GameObject FieldItem;
     private GameObject BeforeActive;
     public FieldItemStatus FieldItemStatus;
+    public BuffList Bufflist;
 
     List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
     public int TotalItem;
@@ -139,62 +140,43 @@ public class PlayerInventory : MonoBehaviour
 
     void ItemActive(int selectItem)
     {
-        Effect(ItemData[selectItem].Name, ItemData[selectItem].Target, ItemData[selectItem].Subject, ItemData[selectItem].Effect, ItemData[selectItem].ActTime);
-
-
-    }
-
-    void Effect(string name, string target, string subject, int value, int time)
-    {
-        switch (target)
+        if (ItemData[selectItem].Target == "Field")
         {
-            case "Player":
-                EffectToPlayer(subject, value, time);
-                break;
-            case "Enemy":
-                EffectToZombie(subject, value, time);
-                break;
-            case "Field":
-                EffectToField(name, subject, value, time);
-                break;
+            EffectToField(ItemData[selectItem].Name, ItemData[selectItem].Subject, ItemData[selectItem].Effect, ItemData[selectItem].ActTime);
         }
+        else
+        {
+            Bufflist.Target = ItemData[selectItem].Target;
+            Bufflist.ResetTime = ItemData[selectItem].ActTime;
+            switch (ItemData[selectItem].Subject)
+            {
+                case "Health":
+                    Bufflist.Health = ItemData[selectItem].Effect;
+                    Bufflist.WalkSpeed = 0f;
+                    Bufflist.RunSpeed = 0f;
+                    Bufflist.Battery = 0f;
+                    break;
+                case "Speed":
+                    Bufflist.Health = 0;
+                    Bufflist.WalkSpeed = ItemData[selectItem].Effect;
+                    Bufflist.RunSpeed = ItemData[selectItem].Effect;
+                    Bufflist.Battery = 0f;
+                    break;
+
+                case "Battery":
+                    Bufflist.Health = 0;
+                    Bufflist.WalkSpeed = 0f;
+                    Bufflist.RunSpeed = 0f;
+                    Bufflist.Battery = ItemData[selectItem].Effect;
+                    break;
+            }
+            Bufflist.buffActive = true;
+        }
+
+
+
     }
 
-    void EffectToPlayer(string Status, int Value, int Time)
-    {
-        switch (Status)
-        {
-            case "Health":
-                _player.Health += Value;
-                break;
-            case "Speed":
-                _player.WalkSpeed += Value;
-                _player.RunSpeed += Value;
-                _player.BuffTime = Time;
-                break;
-            case "Battery":
-                _player.Battery += Value;
-                break;
-        }
-    }
-
-    void EffectToZombie(string Status, int Value, int Time)
-    {
-        switch (Status)
-        {
-            case "Speed":
-                if (_player.CloseDistanceZombie != null)
-                {
-                    Zombie = _player.CloseDistanceZombie;
-                    Zombie.WalkSpeed += Value;
-                    Zombie.RunSpeed += Value;
-                    Zombie.NeffTime = Time;
-                    Zombie.NeffOn = true;
-                }
-                break;
-                
-        }
-    }
 
     void EffectToField(string name, string Status, int value, int time)
     {
