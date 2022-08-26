@@ -37,11 +37,12 @@ public class Buff : MonoBehaviour
         if (_loadData == false)
         { 
             LoadData();
-            GetTarget();
+            GetPlayer();
         }
 
         if (_active == false)
         {
+            GetZombie();
             ActiveEffect();
         }
         ClearBuff();
@@ -62,19 +63,19 @@ public class Buff : MonoBehaviour
         }
     }
 
-    void GetTarget()
+    void GetPlayer()
     {
         _transform.position = new Vector3(Bufflist._bufflist.Count * 10f, 10f, 0f);
 
-        switch (_target)
-        {
-            case "Player":
-                _player = GetComponentInParent<PlayerStatus>();
-                break;
+        _player = GetComponentInParent<PlayerStatus>();
 
-            case "Zombie":
-                _zombie = GameObject.Find("Zombie").GetComponent<ZombieStatus>();
-                break;
+    }
+
+    void GetZombie()
+    {
+        if (_player.CloseDistanceZombie != null && _target == "Enemy")
+        {
+            _zombie = _player.CloseDistanceZombie;
         }
     }
 
@@ -89,7 +90,7 @@ public class Buff : MonoBehaviour
                 _player.Battery += _battery;
                 break;
 
-            case "Zombie":
+            case "Enemy":
                 _zombie.WalkSpeed += _walkSpeed;
                 _zombie.RunSpeed += _runSpeed;
                 break;
@@ -114,7 +115,7 @@ public class Buff : MonoBehaviour
                         _player.Battery -= _battery;
                         break;
 
-                    case "Zombie":
+                    case "Enemy":
                         _zombie.WalkSpeed -= _walkSpeed;
                         _zombie.RunSpeed -= _runSpeed;
                         break;

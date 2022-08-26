@@ -22,6 +22,7 @@ public class BuffList : MonoBehaviour
 
     public bool buffActive;
 
+
     private void Update()
     {
         if (buffActive == true)
