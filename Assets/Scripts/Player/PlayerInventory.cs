@@ -27,11 +27,7 @@ public class PlayerInventory : MonoBehaviour
     public ZombieStatus Zombie;
     public PlayerInput _input;
     public CSVReader CSV;
-    
-    private void Awake()
-    {
-
-    }
+   
 
     private void Start()
     {
@@ -94,7 +90,6 @@ public class PlayerInventory : MonoBehaviour
 
     void Select()
     {
-
         if (_nowInput != -1 && SelectItem != -1)
         {
             if (SelectItem == _nowInput)
@@ -135,7 +130,6 @@ public class PlayerInventory : MonoBehaviour
 
     void InputKey()
     {
-
         if (_input.Num1 == true) { _nowInput = 0; }
         if (_input.Num2 == true) { _nowInput = 1; }
         if (_input.Num3 == true) { _nowInput = 2; }
