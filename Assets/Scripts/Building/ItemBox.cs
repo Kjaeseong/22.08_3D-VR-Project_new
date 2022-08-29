@@ -14,6 +14,7 @@ public class ItemBox : MonoBehaviour
             if (_inventory.list.Count < _inventory.Size + 1)
             {
                 _inventory.list.Add(Random.Range(1, FileManager.Instance.Icon.Count + 1));
+
                 gameObject.SetActive(false);
             }
         }

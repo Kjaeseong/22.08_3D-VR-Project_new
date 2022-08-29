@@ -3196,12 +3196,6 @@ MonoBehaviour:
   - {fileID: 2485299814604464376}
   - {fileID: 2485299814966410066}
   - {fileID: 2485299815122487496}
-  IconFile:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   TotalItem: 0
   SelectSlot: 0
   InventorySize: 0

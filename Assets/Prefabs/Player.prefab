@@ -209,7 +209,7 @@ MonoBehaviour:
   HealthMax: 5
   Battery: 100
   WalkSpeed: 10
-  RunSpeed: 200
+  RunSpeed: 15
   IsRunning: 0
   IsMoving: 0
   FlashOn: 0

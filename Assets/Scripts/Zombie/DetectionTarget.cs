@@ -45,8 +45,12 @@ public class DetectionTarget : MonoBehaviour
         ColliderSize = TargetCollider.Length;
         for (int i = 0; i < TargetCollider.Length; i++)
         {
+
+            Debug.Log($"{TargetCollider[i].tag}");
+
             Target = TargetCollider[i].transform;
             Vector3 direction = Target.position - transform.position;
+
 
             if (Vector3.Dot(direction.normalized, transform.forward) > GetAngle(viewAngle / 2).z)
             {
@@ -54,7 +58,8 @@ public class DetectionTarget : MonoBehaviour
             }
             if (SelectTarget == null)
             {
-                OutsideEyesight();
+                OutsideEyesight(); 
+
             }
         }
 
@@ -76,6 +81,9 @@ public class DetectionTarget : MonoBehaviour
         if (Target.tag == "FieldItem")
         {
             SelectTarget = Target;
+
+
+
         }
         else if (Target.tag == "Player")
         {

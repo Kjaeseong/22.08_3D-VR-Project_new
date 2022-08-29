@@ -207,7 +207,6 @@ public class PlayerInventory : MonoBehaviour
     {
         if (SelectItem != -1)
         {
-            Debug.Log($"--{SelectItem}");
             if (ItemData[SelectItem].Target == "Field")
             {
                 BeforeActive.SetActive(true);
