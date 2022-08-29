@@ -35,7 +35,7 @@ public class PlayerInput : MonoBehaviour
         Controll();
         Item();
         PauseUI();
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void PlayerMove()
