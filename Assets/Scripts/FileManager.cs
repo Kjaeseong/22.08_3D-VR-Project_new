@@ -25,6 +25,4 @@ public class FileManager : SingletonBehaviour<FileManager>
             Icon.Add(Resources.Load<Sprite>("Item/Icon" + (i + 1).ToString()));
         }
     }
-
-
 }
