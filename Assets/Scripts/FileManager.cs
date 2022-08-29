@@ -8,7 +8,7 @@ public class FileManager : SingletonBehaviour<FileManager>
     public List<Sprite> ImageList;
     public int TotalItem;
 
-    List<Dictionary<string, object>> CSV = new List<Dictionary<string, object>>();
+    public List<Dictionary<string, object>> CSV = new List<Dictionary<string, object>>();
 
 
 
@@ -19,11 +19,11 @@ public class FileManager : SingletonBehaviour<FileManager>
         CSV = CSVReader.Read("Item/ItemData");
         TotalItem = CSV.Count;
 
+
     }
 
 
 
-    // Update is called once per frame
     void Update()
     {
         

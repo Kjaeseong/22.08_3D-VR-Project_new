@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
+
+    
     public List<int> list = new List<int>();
+    
+    public Item[] ItemData = new Item[5];
+
+    
+
+
     public int Size = 4;
 
     public GameObject ItemPrefab;
     public GameObject[] Item = new GameObject[5];
-    public Item[] ItemData = new Item[5];
+    
 
     public GameObject FieldItemPrefab;
     public GameObject FieldItem;
@@ -35,8 +43,8 @@ public class PlayerInventory : MonoBehaviour
         BeforeActive.transform.parent = gameObject.transform;
         BeforeActive.SetActive(false);
 
-        data = CSVReader.Read("Item/ItemData");
-        TotalItem = data.Count;
+        data = CSVReader.Read("Item/ItemData");// -------------------------------------
+        TotalItem = data.Count;// -------------------------------------
         Bufflist.TotalItem = TotalItem;
 
         for (int i = 0; i < 5; i++)
@@ -53,31 +61,37 @@ public class PlayerInventory : MonoBehaviour
     {
         UseItem();
 
+        ActiveItemSlot();
         
 
+
+
+
+    }
+
+    void ActiveItemSlot()
+    {
         for (int i = 0; i < 5; i++)
         {
             if (i < list.Count)
             {
                 ItemData[i].Index = list[i];
-                ItemData[i].Name = data[list[i] - 1]["name"].ToString();
-                ItemData[i].Target = data[list[i] - 1]["target"].ToString();
-                ItemData[i].Subject = data[list[i] - 1]["subject"].ToString();
-                ItemData[i].Effect = int.Parse(data[list[i] - 1]["value"].ToString());
-                ItemData[i].ActTime = int.Parse(data[list[i] - 1]["time"].ToString());
-                ItemData[i].Discription = data[list[i] - 1]["description"].ToString();
+                ItemData[i].Name = FileManager.Instance.CSV[list[i] - 1]["name"].ToString();
+                ItemData[i].Target = FileManager.Instance.CSV[list[i] - 1]["target"].ToString();
+                ItemData[i].Subject = FileManager.Instance.CSV[list[i] - 1]["subject"].ToString();
+                ItemData[i].Effect = int.Parse(FileManager.Instance.CSV[list[i] - 1]["value"].ToString());
+                ItemData[i].ActTime = int.Parse(FileManager.Instance.CSV[list[i] - 1]["time"].ToString());
+                ItemData[i].Discription = FileManager.Instance.CSV[list[i] - 1]["description"].ToString();
 
                 Item[i].SetActive(true);
-                
             }
-            else 
+            else
             {
                 Item[i].SetActive(false);
             }
         }
-
-
     }
+
 
     void UseItem()
     {
