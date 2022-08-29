@@ -7,8 +7,8 @@ public class PlayerStatus : MonoBehaviour
     public int Health = 5;
     public int HealthMax = 5;
     public float Battery = 100f;
-    public float WalkSpeed = 3f;
-    public float RunSpeed = 7f;
+    public float WalkSpeed = 10f;
+    public float RunSpeed = 20f;
 
     private int _health_default;
     private int _healthMax_default;
@@ -16,30 +16,25 @@ public class PlayerStatus : MonoBehaviour
     private float _walkSpeed_default;
     private float _runSpeed_default;
 
-    public float BuffTime;
-
-    public bool BePursued = false;
-    public bool BePursuedRX;
-    public bool CurrentRX;
-
-    public GameObject CloseDistObject;
-    public ZombieStatus CloseDistanceZombie;
-
-    public bool BuffOn;
-
-
-
-
-    public float MinDistance;
-    public int IsScary = 0;
-
     public bool IsRunning;
     public bool IsMoving;
     public bool FlashOn = false;
     public bool IsDie = false;
     public bool OperationMachine = false;
+    
+    public bool BePursued = false;
+    public bool BePursuedRX;
+    public bool CurrentRX;
+    
+    public float BuffTime;
 
+    public GameObject CloseDistObject;
+    public ZombieStatus CloseDistanceZombie;
+    public float MinDistance;
 
+    public bool BuffOn;
+
+    public int IsScary = 0;
 
     public GameObject FlashLight;
 

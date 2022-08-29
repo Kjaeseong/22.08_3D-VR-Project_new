@@ -6,7 +6,6 @@ public class FieldItemStatus : MonoBehaviour
 {
     public int Health;
     public float ActiveTime = 0f;
-    public Vector3 Position;
 
     private bool _haveHealth = false;
     private bool _haveActiveTime = false;
@@ -15,11 +14,14 @@ public class FieldItemStatus : MonoBehaviour
     private void Update()
     {
 
+
+
         if (Health > 0)
         {
             _haveHealth = true;
         }
-        if (ActiveTime > 0)
+
+        if (ActiveTime > 1)
         {
             _haveActiveTime = true;
             ActiveTime -= Time.deltaTime;

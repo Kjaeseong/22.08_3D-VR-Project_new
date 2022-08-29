@@ -60,12 +60,12 @@ public class Buff : MonoBehaviour
                 _posStep = i + 1;
             }
         }
-        _transform.position = new Vector3(_posStep * 100f, 10f, 0f);
+        _transform.position = new Vector3(10f, _posStep * 80f, 0f);
     }
 
     void LoadData()
     {
-        _image.sprite = Bufflist.IconFile[Bufflist.Index - 1];
+        _image.sprite = FileManager.Instance.Icon[Bufflist.Index - 1];
         _target = Bufflist.Target;
         _resetTime = Bufflist.ResetTime;
         _health = Bufflist.Health;
@@ -84,7 +84,6 @@ public class Buff : MonoBehaviour
     void GetPlayer()
     {
         _player = GetComponentInParent<PlayerStatus>();
-
     }
 
     void GetZombie()

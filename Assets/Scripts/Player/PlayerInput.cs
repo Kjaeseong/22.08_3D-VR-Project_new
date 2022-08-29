@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    // Rotate
+    public float Rotate_x;
+    public float Rotate_y;
+
     // Move
-    public int x;
-    public int z;
+    public float x;
+    public float z;
 
     // Controll
     public bool F;
@@ -20,19 +24,30 @@ public class PlayerInput : MonoBehaviour
     public bool Num4;
     public bool Num5;
 
-    // Interface
-    public bool ESC;
+    // Pause
     public bool P;
 
-    //For Test
-    public bool O;
 
     void Update()
     {
+        PlayerRotate();
+        PlayerMove();
         Controll();
         Item();
-        Interface();
-        test();
+        PauseUI();
+    }
+
+    void PlayerMove()
+    {
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+    }
+
+    void PlayerRotate()
+    {
+        Rotate_y = Input.GetAxis("Mouse X");
+        Rotate_x = -Input.GetAxis("Mouse Y");
+
     }
 
     void Item()
@@ -51,33 +66,12 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))        { Space = true; }   else { Space = false; }
     }
 
-    void test()
+    void PauseUI()
     {
-
-        if (Input.GetKeyDown(KeyCode.O)) 
-        { 
-            O = true;
-            GameManager.Instance.DestroyGameData();
-        } 
-        else 
-        { 
-            O = false; 
-        }
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
     }
 
-    void Interface()
-    { 
-        if (Input.GetKeyDown(KeyCode.Escape))   { ESC = true; }     else { ESC = false; }
-        if (Input.GetKeyDown(KeyCode.P))        { P = true; }       else { P = false; }
-    }
 
-    private void Pause()
-    {
-        if (ESC == true || P == true)
-        { 
-            
-        }
-    }
 
 
 }

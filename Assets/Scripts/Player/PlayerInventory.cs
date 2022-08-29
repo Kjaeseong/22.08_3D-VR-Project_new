@@ -25,9 +25,6 @@ public class PlayerInventory : MonoBehaviour
     public FieldItemStatus FieldItemStatus;
     public BuffList Bufflist;
 
-    List<Dictionary<string, object>> data = new List<Dictionary<string, object>>();
-    public int TotalItem;
-
     public int SelectItem = -1;
     private int _nowInput = -1;
 
@@ -36,6 +33,7 @@ public class PlayerInventory : MonoBehaviour
     public PlayerInput _input;
     public CSVReader CSV;
    
+    public int TotalItem;
 
     private void Start()
     {
@@ -43,8 +41,7 @@ public class PlayerInventory : MonoBehaviour
         BeforeActive.transform.parent = gameObject.transform;
         BeforeActive.SetActive(false);
 
-        data = CSVReader.Read("Item/ItemData");// -------------------------------------
-        TotalItem = data.Count;// -------------------------------------
+        TotalItem = FileManager.Instance.CSV.Count;
         Bufflist.TotalItem = TotalItem;
 
         for (int i = 0; i < 5; i++)
@@ -62,11 +59,6 @@ public class PlayerInventory : MonoBehaviour
         UseItem();
 
         ActiveItemSlot();
-        
-
-
-
-
     }
 
     void ActiveItemSlot()
@@ -98,11 +90,11 @@ public class PlayerInventory : MonoBehaviour
         if (list.Count > 0)
         {
             InputKey();
-            Select();
+            ItemSlotSelect();
         }
     }
 
-    void Select()
+    void ItemSlotSelect()
     {
         if (_nowInput != -1 && SelectItem != -1)
         {
@@ -112,10 +104,7 @@ public class PlayerInventory : MonoBehaviour
                 _nowInput = -1;
 
                 ItemActive(SelectItem);
-                if (ItemData[SelectItem].Target == "Field")
-                {
-                    BeforeActive.SetActive(false);
-                }
+                SelectItem = -1;
             }
             else
             {
@@ -129,17 +118,10 @@ public class PlayerInventory : MonoBehaviour
             SelectItem = _nowInput;
             _nowInput = -1;
         }
-        if (SelectItem != -1)
-        {
-            if (ItemData[SelectItem].Target == "Field")
-            {
-                BeforeActive.SetActive(true);
-                BeforeActive.transform.position = new Vector3(_player.transform.position.x, 1f, _player.transform.position.z + 5f);
+        ReadyEffectToField();
 
-            }
-        }
-        
-        
+
+
     }
 
     void InputKey()
@@ -156,8 +138,9 @@ public class PlayerInventory : MonoBehaviour
     {
         if (ItemData[selectItem].Target == "Field")
         {
-            EffectToField(ItemData[selectItem].Name, ItemData[selectItem].Subject, ItemData[selectItem].Effect, ItemData[selectItem].ActTime);
+            EffectToField(ItemData[selectItem].Name, ItemData[selectItem].Subject, ItemData[selectItem].Effect, ItemData[selectItem].ActTime, BeforeActive.transform.position);
         }
+
         else
         {
             Bufflist.Target = ItemData[selectItem].Target;
@@ -191,19 +174,22 @@ public class PlayerInventory : MonoBehaviour
 
 
 
+
     }
 
 
-    void EffectToField(string name, string Status, int value, int time)
+    void EffectToField(string name, string Status, int value, int time, Vector3 position)
     {
+
+        
         switch (Status)
         {
             case "Health":
                 FieldItem = Instantiate(FieldItemPrefab) as GameObject;
                 FieldItem.name = name;
                 FieldItem.tag = "FieldItem";
-                FieldItem.transform.position = new Vector3(_player.transform.localPosition.x, 1f, _player.transform.localPosition.z + 5f);
-                Debug.Log(FieldItem);
+                FieldItem.transform.position = position;
+                FieldItem.SetActive(true);
 
                 FieldItemStatus = FieldItem.GetComponent<FieldItemStatus>();
                 FieldItemStatus.Health = value;
@@ -213,12 +199,27 @@ public class PlayerInventory : MonoBehaviour
                 }
                 break;
         }
-    }
 
-    void ReadyEffectToField()
-    { 
         
     }
 
-
+    void ReadyEffectToField()
+    {
+        if (SelectItem != -1)
+        {
+            Debug.Log($"--{SelectItem}");
+            if (ItemData[SelectItem].Target == "Field")
+            {
+                BeforeActive.SetActive(true);
+            }
+            else
+            {
+                BeforeActive.SetActive(false);
+            }
+        }
+        else
+        {
+            BeforeActive.SetActive(false);
+        }
+    }
 }
