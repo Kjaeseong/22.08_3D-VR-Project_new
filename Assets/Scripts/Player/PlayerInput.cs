@@ -4,81 +4,78 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Keyboard
+    // Rotate
     public float Rotate_x;
     public float Rotate_y;
+
+    // Move
     public float x;
     public float z;
+
+    // Flash On/Off
     public bool F;
+
+    // Run
     public bool LShift;
+
+    // Action
     public bool Space;
+
+    // Item Slot
     public bool Num1;
     public bool Num2;
     public bool Num3;
     public bool Num4;
     public bool Num5;
+
+    // Pause
     public bool P;
 
-    public float VR_Rotate_x;   //  우측 아날로그_시점 조정
-    public float VR_Rotate_y;   //  우측 아날로그
-    public float VR_x;  //  좌측 아날로그_이동
-    public float VR_z;  //  좌측 아날로그
-    public bool VR_A;       //아이템 사용
-    public bool VR_B;       //아이템 선택 취소
-    public bool VR_X;       //상호작용 / 선택
-    public bool VR_Y;       //플래시
-    public bool VR_PIndexTrigger;   //달리기
-    public bool VR_Reserved; // Pause
-    public bool VR_PHandTrigger;    //  아이템 선택 왼쪽
-    public bool VR_SHandTrigger;    //  아이템 선택 오른쪽
 
+    // Item Slot Select For VR
+    public bool VR_UseItem;
+
+    public int VR_ScrollNum;
+    private bool VR_ScrollButton;
 
     void Update()
-    {
-        KeyboardInput();
-        Cursor.lockState = CursorLockMode.Locked;
-        VRInput();
-
-
-
-/*
+    {        
         if(GameManager.Instance.keyboard_Controll == true)
         {
-            
+            keyboardInput();
         }
         else
         {
-            
+            VRInput();
         }
-
-
-*/
-        
     }
 
-    void KeyboardInput()
+    void keyboardInput()
     {
-        keyboard_PlayerRotate();
-        keyboard_PlayerMove();
-        keyboard_Controll();
-        keyboard_Item();
-        keyboard_PauseUI();
+        PlayerRotate();
+        PlayerMove();
+        Controll();
+        Item();
+        PauseUI();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void keyboard_PlayerMove()
+
+    void PlayerMove()
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
+
     }
 
-    void keyboard_PlayerRotate()
+    void PlayerRotate()
     {
         Rotate_y = Input.GetAxis("Mouse X");
         Rotate_x = -Input.GetAxis("Mouse Y");
 
     }
 
-    void keyboard_Item()
+    void Item()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))   { Num1 = true; }    else { Num1 = false; }
         if (Input.GetKeyDown(KeyCode.Alpha2))   { Num2 = true; }    else { Num2 = false; }
@@ -87,14 +84,14 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))   { Num5 = true; }    else { Num5 = false; }
     }
 
-    void keyboard_Controll()
+    void Controll()
     {
         if (Input.GetKeyDown(KeyCode.F))        { F = true; }       else { F = false; }
         if (Input.GetKey(KeyCode.LeftShift))    { LShift = true; }  else { LShift = false; }
         if (Input.GetKey(KeyCode.Space))        { Space = true; }   else { Space = false; }
     }
 
-    void keyboard_PauseUI()
+    void PauseUI()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
     }
@@ -108,43 +105,74 @@ public class PlayerInput : MonoBehaviour
         VR_PauseUI();
     }
 
+
     void VR_PlayerRotate()
     {
         if(OVRInput.Get(OVRInput.Touch.SecondaryThumbstick))
         {
-            Vector2 thumbstick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+            Vector2 RightStick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
 
-            VR_Rotate_x = thumbstick.x;
-            VR_Rotate_y = thumbstick.y;
+            Rotate_x = RightStick.x;
+            Rotate_y = RightStick.y;
 
-            Debug.Log($"-{VR_Rotate_x}-");
-            Debug.Log($"-{VR_Rotate_y}-");
+            Debug.Log($"-X축 회전 : {Rotate_x}-");
+            Debug.Log($"-Y축 회전 : {Rotate_y}-");
 
-            //테스트 언제해보냐...
+            //테스트 언제해보냐...ㅅㅂ
         }
 
     }
     void VR_PlayerMove()
     {
+        if(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick))
+        {
+            Vector2 LeftStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
 
+            x = LeftStick.x;
+            z = LeftStick.y;
 
+            Debug.Log($"-X축 이동 : {x}-");
+            Debug.Log($"-Y축 이동 : {z}-");
+        }
     }
+
     void VR_Controll()
     {
-        if(OVRInput.GetDown(OVRInput.Button.One))
+        if(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= 0.5)
         {
-            Debug.Log($"-입력 테스트코드(A)-");
+            Debug.Log($"-뛰기 버튼 눌림-");
+        }
+
+        if(OVRInput.GetDown(OVRInput.Button.Two))
+        {
+            Debug.Log($"-손전등 눌림-");
+        }
+
+        if(OVRInput.Get(OVRInput.Button.Four))
+        {
+            Debug.Log($"-상호작용 키 눌림-");
         }
 
     }
     void VR_Item()
     {
+        if(OVRInput.GetDown(OVRInput.Button.One))
+        {
+            Debug.Log($"-아이템 선택버튼 눌림-");
+        }
 
+        if(OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.5)
+        {
+            Debug.Log($"-아이템 사용 버튼 눌림-");
+        }
 
     }
     void VR_PauseUI()
     {
-
+        if(OVRInput.GetDown(OVRInput.Button.Three))
+        {
+            Debug.Log($"-Pause 버튼 눌림-");
+        }
 
     }
 
