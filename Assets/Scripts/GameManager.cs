@@ -6,25 +6,21 @@ public class GameManager : SingletonBehaviour<GameManager>
 {
     private GameObject[] _pool = new GameObject[5];
 
-<<<<<<< HEAD
     public bool UseVR;
 
     private GameObject _camera;
     private GameObject _VR;
-=======
     public bool keyboard_Controll;
     private PlayerInput _input;
-    private GameObject _camera;
     private GameObject _ovrCamera;
->>>>>>> 95ca876 (Test: Oculus Input Test Code)
 
     public GameObject Player;
     public GameObject Zombie;
     public GameObject Building;
-/*
+
 
     public GameObject IngameUI;
-*/
+
 
     public GameObject Map;
 

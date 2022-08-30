@@ -161,6 +161,9 @@ PlayerSettings:
     Android: com.KGA.Nonamed
 =======
     Android: com.unity3d.vikingVillageURP
+<<<<<<< HEAD
+>>>>>>> 95ca876 (Test: Oculus Input Test Code)
+=======
 >>>>>>> 95ca876 (Test: Oculus Input Test Code)
     Standalone: com.DefaultCompany.22.08-3D-VR-Project
     iPhone: com.Company.ProductName
