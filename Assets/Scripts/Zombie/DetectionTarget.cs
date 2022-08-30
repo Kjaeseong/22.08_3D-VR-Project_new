@@ -46,8 +46,6 @@ public class DetectionTarget : MonoBehaviour
         for (int i = 0; i < TargetCollider.Length; i++)
         {
 
-            Debug.Log($"{TargetCollider[i].tag}");
-
             Target = TargetCollider[i].transform;
             Vector3 direction = Target.position - transform.position;
 

@@ -84,13 +84,6 @@ public class ZombieSpawner : MonoBehaviour
 
     }
 
-
-
-
-
-
-    
-
     void Summon(int area, int slot)
     {
         RandomPositionSet(area + 1, 20f, 480f, 3f);
