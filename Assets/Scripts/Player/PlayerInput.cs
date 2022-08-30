@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    public GameObject GameCam;
+    //public GameObject VR;
+
     // Rotate
     public float Rotate_x;
     public float Rotate_y;
@@ -39,15 +42,41 @@ public class PlayerInput : MonoBehaviour
     private bool VR_ScrollButton;
 
     void Update()
-    {        
-        if(GameManager.Instance.keyboard_Controll == true)
+    {   
+        ChangeController();
+
+        if(GameManager.Instance.UseVR == false)
         {
             keyboardInput();
+
+            Debug.Log($"-키보드 사용-");
+
         }
         else
         {
             VRInput();
+
+            Debug.Log($"-VR 사용-");
+
         }
+    }
+
+    void ChangeController()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            GameManager.Instance.UseVR = false;
+            GameCam.SetActive(true);
+            //VR.SetActive(false);
+        }
+        
+        if(OVRInput.GetDown(OVRInput.Button.Four))
+        {
+            GameManager.Instance.UseVR = true;
+            //VR.SetActive(true);
+            GameCam.SetActive(false);
+        }
+
     }
 
     void keyboardInput()
@@ -150,7 +179,7 @@ public class PlayerInput : MonoBehaviour
 
         if(OVRInput.Get(OVRInput.Button.Four))
         {
-            Debug.Log($"-상호작용 키 눌림-");
+            Debug.Log($"-상호작용/선택 키 눌림-");
         }
 
     }

@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06beb948a08877489966e21a34b0f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameCam: {fileID: 8341615142093199404}
   Rotate_x: 0
   Rotate_y: 0
   x: 0
@@ -348,6 +349,8 @@ MonoBehaviour:
   Num4: 0
   Num5: 0
   P: 0
+  VR_UseItem: 0
+  VR_ScrollNum: 0
 --- !u!1 &2548796631637866017
 GameObject:
   m_ObjectHideFlags: 0
