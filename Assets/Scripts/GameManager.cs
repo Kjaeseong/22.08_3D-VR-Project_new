@@ -61,4 +61,11 @@ public class GameManager : SingletonBehaviour<GameManager>
         GameOver = false;
         Phase = 0;
     }
+
+    public void Clear()
+    { 
+    
+    }
+
+
 }

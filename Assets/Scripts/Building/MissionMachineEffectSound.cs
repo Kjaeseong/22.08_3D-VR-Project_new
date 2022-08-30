@@ -20,7 +20,6 @@ public class MissionMachineEffectSound : MonoBehaviour
 
     }
 
-
     void OperationSound()
     {
         _current = _now;
