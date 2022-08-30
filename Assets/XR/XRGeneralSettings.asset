@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!114 &-8040141529685042835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16,6 +17,8 @@ MonoBehaviour:
   m_AutomaticLoading: 0
   m_AutomaticRunning: 0
   m_Loaders: []
+=======
+>>>>>>> 95ca876 (Test: Oculus Input Test Code)
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28,10 +31,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2dc886499c26824283350fa532d087d, type: 3}
   m_Name: XRGeneralSettings
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   Keys: 0100000007000000
   Values:
   - {fileID: 8428756057197900629}
   - {fileID: 6965338480050984902}
+=======
+  Keys: 01000000
+  Values:
+  - {fileID: 8428756057197900629}
+>>>>>>> 95ca876 (Test: Oculus Input Test Code)
 --- !u!114 &1554473105205215190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49,6 +58,7 @@ MonoBehaviour:
   m_AutomaticRunning: 0
   m_Loaders:
   - {fileID: 11400000, guid: 25508ab0ebe9b92458d6401e0fafeab3, type: 2}
+<<<<<<< HEAD
 --- !u!114 &6965338480050984902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +73,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LoaderManagerInstance: {fileID: -8040141529685042835}
   m_InitManagerOnStart: 1
+=======
+>>>>>>> 95ca876 (Test: Oculus Input Test Code)
 --- !u!114 &8428756057197900629
 MonoBehaviour:
   m_ObjectHideFlags: 0

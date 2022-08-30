@@ -157,7 +157,11 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+<<<<<<< HEAD
     Android: com.KGA.Nonamed
+=======
+    Android: com.unity3d.vikingVillageURP
+>>>>>>> 95ca876 (Test: Oculus Input Test Code)
     Standalone: com.DefaultCompany.22.08-3D-VR-Project
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
