@@ -49,12 +49,10 @@ public class DoorScreen : MonoBehaviour
         if (BackGround.fillAmount <= 1)
         {
             BackGround.fillAmount += 0.1f;
-            Debug.Log($"배경 필어마운트 올림");
         }
 
         if (BackGround.fillAmount >= 1)
         {
-            Debug.Log($"텍스트 켜라");
             PrintText = true;
         }
     }
@@ -65,13 +63,11 @@ public class DoorScreen : MonoBehaviour
 
         if (BackGround.fillAmount >= 0)
         {
-            Debug.Log($"필어마운트 내려라");
             BackGround.fillAmount -= 0.1f;
         }
 
         if (BackGround.fillAmount <= 0)
         {
-            Debug.Log($"꺼라");
             gameObject.SetActive(false);
         }
 

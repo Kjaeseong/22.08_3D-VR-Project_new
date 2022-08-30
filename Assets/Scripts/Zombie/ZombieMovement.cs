@@ -71,7 +71,7 @@ public class ZombieMovement : MonoBehaviour
         _turn += Time.deltaTime;
         if (_turn >= TurnDelay)
         {
-            transform.rotation = Quaternion.Euler(0f, Random.Range(0, 180), 0f); 
+            transform.rotation = Quaternion.Euler(0f, Random.Range(0, 360), 0f); 
 
             _turn = 0f;
         }

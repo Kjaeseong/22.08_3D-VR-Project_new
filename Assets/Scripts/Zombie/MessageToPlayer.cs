@@ -60,13 +60,15 @@ public class MessageToPlayer : MonoBehaviour
     {
         if (_detection.SelectTarget != null && _zombie.ActiveAttack == true)
         {
-            if (_detection.SelectTarget.name == "Player")
+            if (_detection.SelectTarget.tag == "Player")
             {
                 _player.Health -= _zombie.AttackDamage;
             }
-            if (_detection.SelectTarget.name == "Mannequin")
+            if (_detection.SelectTarget.tag == "FieldItem")
             {
-                //_mannequin.Health -= _zombie.AttackDamage;
+                FieldItemStatus Item = _detection.SelectTarget.GetComponent<FieldItemStatus>();
+                Item.Health -= _zombie.AttackDamage;
+                Item = null;
             }
             _zombie.ActiveAttack = false;
         }

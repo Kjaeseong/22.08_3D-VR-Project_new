@@ -12,7 +12,6 @@ public class InventoryUI : MonoBehaviour
     public GameObject[] Light = new GameObject[5];
     public GameObject[] Icon = new GameObject[5];
     private ItemIcon[] _icon = new ItemIcon[5];
-    public Sprite[] IconFile = new Sprite[3];
     public int TotalItem;
 
     public int SelectSlot;
@@ -29,29 +28,10 @@ public class InventoryUI : MonoBehaviour
     }
     private void Update()
     {
-        DataUpdate();
         ActiveIcon();
         ItemSelect();
     }
 
-    void DataUpdate()
-    {
-        LoadIconImage();
-
-    }
-
-    void LoadIconImage()
-    {
-        if (TotalItem > 0 && IconFile[0] == null)
-        {
-            IconFile = new Sprite[TotalItem];
-            for (int i = 0; i < TotalItem; i++)
-            {
-                IconFile[i] = Resources.Load<Sprite>("Item/Icon" + (i + 1).ToString());
-            }
-        }
-
-    }
     
     void ActiveIcon()
     {
@@ -63,7 +43,7 @@ public class InventoryUI : MonoBehaviour
                 {
                     ItemInfo[i] = GameObject.Find(((i + 1).ToString()) + " Slot").GetComponent<Item>();
                 }
-                _icon[i].IconFile = IconFile[ItemInfo[i].Index - 1];
+                _icon[i].IconFile = FileManager.Instance.Icon[ItemInfo[i].Index - 1];
                 Icon[i].SetActive(true);
             }
             else 

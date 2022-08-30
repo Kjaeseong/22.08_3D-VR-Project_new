@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float RotateMoveY;
     public float RotateY;
     public float RotateSpeed = 200f;
 
     private float _moveSpeed;
 
-    private PlayerStatus _player;
+    public PlayerStatus _player;
+    public PlayerInput _input;
 
     private void Awake()
     {
@@ -30,19 +30,15 @@ public class PlayerMovement : MonoBehaviour
 
     void Walk()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
-
-        if (h != 0 || v != 0)
+        if ( _input.x != 0 || _input.z != 0)
             _player.IsMoving = true;
         else
             _player.IsMoving = false;
         
-        Vector3 Direction = Vector3.right * h + Vector3.forward * v;
+        Vector3 Direction = Vector3.right * _input.x + Vector3.forward * _input.z;
         transform.Translate(Time.deltaTime * _moveSpeed * Direction.normalized);
 
-        RotateMoveY = Input.GetAxis("Mouse X") * Time.deltaTime * RotateSpeed;
-        RotateY = transform.eulerAngles.y + RotateMoveY;
+        RotateY = transform.eulerAngles.y + _input.Rotate_y * Time.deltaTime * RotateSpeed;
         
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, RotateY, 0);
     }
