@@ -12,37 +12,29 @@ public enum Buttons
 public class TitleUI : MonoBehaviour
 {
     public int MenuSelect;
-    public float a = 8f;
 
     public TitleBanner Start;
     public TitleBanner Exit;
 
+    private float AxisY = 8f;
+    private bool SelectKey;
+    private bool UseVR;
+
+
     private void Update()
     {
-        MenuScroll();
+        InputKey();
         SelectEffect(MenuSelect);
-        Select();
-    }
 
-    void MenuScroll()
-    {
-        a += -Input.GetAxis("Mouse Y");
-        a = Mathf.Clamp(a, 8, 16);
-        MenuSelect = (int)a / 8;
-    }
-
-
-    void Select()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(SelectKey)
         {
             if (MenuSelect == (int)Buttons.START)
             {
-                SelectStart();
+                SceneChanger.Instance.Scene_InGame();
             }
-            if (MenuSelect == (int)Buttons.EXIT)
+            else if (MenuSelect == (int)Buttons.EXIT)
             {
-                SelectExit();
+                Application.Quit();
             }
         }
     }
@@ -62,15 +54,78 @@ public class TitleUI : MonoBehaviour
         }
     }
 
-    private void SelectStart()
+    void InputKey()
     {
-        SceneChanger.Instance.Scene_InGame();
-    }
-    private void SelectExit()
-    {
-        Application.Quit();
+        ChangeController();
+        MenuScroll();
+        SelectButton();
     }
 
+    void MenuScroll()
+    {
+        if(UseVR)
+        {
+            if(OVRInput.Get(OVRInput.Touch.PrimaryThumbstick))
+            {
+                Vector2 LeftStick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+                AxisY += LeftStick.y;
 
+                Debug.Log($"-VR로 메뉴 스크롤-");
+            }
+        }
+        else
+        {
+            AxisY += -Input.GetAxis("Mouse Y");
+        }
+        
+        AxisY = Mathf.Clamp(AxisY, 8, 16);
+        MenuSelect = (int)AxisY / 8;
+    }
 
+    void SelectButton()
+    {
+        if(UseVR)
+        {
+
+            Debug.Log($"-VR 조작상태-");
+
+            if(OVRInput.GetDown(OVRInput.Button.Four))
+            {
+                SelectKey = true;
+            }
+            else
+            {
+                SelectKey = false;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                SelectKey = true;
+            }
+            else
+            {
+                SelectKey = false;
+            }
+        }
+    }
+
+    void ChangeController()
+    {
+        if(UseVR)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                UseVR = false;
+            }
+        }
+        else
+        {
+            if(OVRInput.GetDown(OVRInput.Button.Four))
+            {
+                UseVR = true;
+            }
+        }
+    }
 }

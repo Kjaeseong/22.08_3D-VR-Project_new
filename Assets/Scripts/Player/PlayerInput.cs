@@ -48,16 +48,12 @@ public class PlayerInput : MonoBehaviour
         if(GameManager.Instance.UseVR == false)
         {
             keyboardInput();
-
             Debug.Log($"-키보드 사용-");
-
         }
         else
         {
             VRInput();
-
             Debug.Log($"-VR 사용-");
-
         }
     }
 
@@ -68,13 +64,15 @@ public class PlayerInput : MonoBehaviour
             GameManager.Instance.UseVR = false;
             GameCam.SetActive(true);
             //VR.SetActive(false);
+            Debug.Log($"-키보드 조작 전환-");
         }
-        
+         
         if(OVRInput.GetDown(OVRInput.Button.Four))
         {
             GameManager.Instance.UseVR = true;
             //VR.SetActive(true);
             GameCam.SetActive(false);
+            Debug.Log($"-VR 조작 전환-");
         }
 
     }
@@ -87,6 +85,15 @@ public class PlayerInput : MonoBehaviour
         Item();
         PauseUI();
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void VRInput()
+    {
+        VR_PlayerRotate();
+        VR_PlayerMove();
+        VR_Controll();
+        VR_Item();
+        VR_PauseUI();
     }
 
 
@@ -125,14 +132,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
     }
 
-    void VRInput()
-    {
-        VR_PlayerRotate();
-        VR_PlayerMove();
-        VR_Controll();
-        VR_Item();
-        VR_PauseUI();
-    }
+
 
 
     void VR_PlayerRotate()
