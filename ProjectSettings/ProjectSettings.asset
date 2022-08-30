@@ -156,7 +156,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.unity3d.vikingVillageURP
-    Standalone: com.UnityTechnologies.VikingVillage
+    Standalone: com.DefaultCompany.22.08-3D-VR-Project
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
   buildNumber:
@@ -813,8 +813,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 3
   m_MobileRenderingPath: 1
-  metroPackageName: Skyshop Project 1
-  metroPackageVersion: 
+  metroPackageName: SkyshopProject1
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -822,7 +822,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Skyshop Project 1
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: 22.08_3D,VR Project
   metroTileShowName: 1
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

@@ -5,6 +5,12 @@ using UnityEngine;
 public class GameManager : SingletonBehaviour<GameManager>
 {
     private GameObject[] _pool = new GameObject[5];
+
+    public bool keyboard_Controll;
+    private PlayerInput _input;
+    private GameObject _camera;
+    private GameObject _ovrCamera;
+
     public GameObject Player;
     public GameObject Zombie;
     public GameObject Building;
@@ -24,8 +30,42 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         base.Awake();
         RoadGameDate();
+
+
+        /*
+        ChangeController();
+
+
+*/
     }
 
+
+/*
+    public void ChangeController()
+    {
+        _camera = Player.GetComponentInChildren<GameObject>();
+        _ovrCamera = Player.GetComponentInChildren<GameObject>();
+        _input = Player.GetComponent<PlayerInput>();
+
+        if(keyboard_Controll == true)
+        {
+            _camera.SetActive(true);
+            _ovrCamera.SetActive(false);
+            
+        }
+        else
+        {
+            _camera.SetActive(false);
+            _ovrCamera.SetActive(true);
+            if(_input.Space == true)
+            {
+                keyboard_Controll = true;
+            }
+        }
+    }
+
+
+*/
 
 
     public void RoadGameDate()
