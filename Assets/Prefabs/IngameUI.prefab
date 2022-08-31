@@ -4132,6 +4132,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 529545410550416841}
     m_Modifications:
+    - target: {fileID: 8151303227678308684, guid: ee0d54a6436152c458a2a58a95bca1db,
+        type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151303227678308684, guid: ee0d54a6436152c458a2a58a95bca1db,
+        type: 3}
+      propertyPath: m_OverridePixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8151303228511411104, guid: ee0d54a6436152c458a2a58a95bca1db,
         type: 3}
       propertyPath: m_Name

@@ -24,6 +24,10 @@ public class BuffList : MonoBehaviour
 
     public bool buffActive;
 
+    public Canvas canvas;
+    public GameObject MainCamera;
+    public GameObject VRCamera;
+
 
 
     private void Update()
@@ -31,6 +35,15 @@ public class BuffList : MonoBehaviour
         if (buffActive == true)
         {
             CreateBuff();
+        }
+
+        if(GameManager.Instance.UseVR)
+        {
+            canvas.worldCamera = MainCamera.GetComponent<Camera>();
+        }
+        else
+        {
+            canvas.worldCamera = VRCamera.GetComponent<Camera>();
         }
     }
 

@@ -19,7 +19,7 @@ public class CameraRotate : MonoBehaviour
 
             _rotateX = Mathf.Clamp(_rotateX, -70, 40);
             transform.rotation = Movement.transform.rotation;
-            transform.eulerAngles = new Vector3(_rotateX, Hips.transform.eulerAngles.y, 0f);
+            transform.eulerAngles = new Vector3(_rotateX, transform.eulerAngles.y, 0f);
         }
     }
 }
