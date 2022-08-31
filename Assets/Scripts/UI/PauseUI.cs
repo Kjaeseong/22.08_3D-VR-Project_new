@@ -12,7 +12,7 @@ public enum Menu
 public class PauseUI : MonoBehaviour
 {
     public int MenuSelect;      // 1, 2, 3;
-    public int Scroll;
+    public int Scroll = 1;
     public float a = 8f;
 
     public int ScrollRange = 3;
@@ -21,7 +21,7 @@ public class PauseUI : MonoBehaviour
     public Button Retry;
     public Button MainMenu;
 
-
+    public PlayerInput _input;
 
     private void Update()
     {

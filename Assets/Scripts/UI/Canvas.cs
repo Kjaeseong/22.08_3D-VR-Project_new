@@ -22,6 +22,7 @@ public class Canvas : MonoBehaviour
     public int inven_Size;
 
     public int Rate_Scary;
+    internal Camera worldCamera;
 
     private void Start()
     {

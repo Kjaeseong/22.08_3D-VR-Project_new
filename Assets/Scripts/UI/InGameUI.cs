@@ -11,6 +11,7 @@ public class InGameUI : MonoBehaviour
     public GameObject StartTip;
     public GameObject Parameta;
     public GameObject Pause;
+    private PauseUI _pauseUI;
     public GameObject GameEnd;
 
     public bool GameOver;
@@ -24,6 +25,9 @@ public class InGameUI : MonoBehaviour
         _playerObject = GameObject.Find("Player");
         _player = _playerObject.GetComponent<PlayerStatus>();
         _input = _playerObject.GetComponent<PlayerInput>();
+        _pauseUI = Pause.GetComponent<PauseUI>();
+
+        _pauseUI._input = _input;
 
         Pause.SetActive(false);
         GameEnd.SetActive(false);

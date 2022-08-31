@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TitleUI : MonoBehaviour
+public class VRTitleUI : MonoBehaviour
 {
     public int MenuSelect;
 
     public TitleBanner _Start;
     public TitleBanner Exit;
 
-    public GameObject VRTitleUI;
-    public GameObject MainCamera;
-
-    public VRTitleUI VRUI;
+    public GameObject MainTitleUI;
+    public GameObject VRCamera;
+    public TitleUI MainUI;
 
     private float AxisY = 8f;
     private bool SelectKey;
@@ -23,7 +22,6 @@ public class TitleUI : MonoBehaviour
         InputKey();
         SelectEffect(MenuSelect);
         Cursor.lockState = CursorLockMode.Locked;
-
         
         if(SelectKey)
         {
@@ -85,9 +83,6 @@ public class TitleUI : MonoBehaviour
     {
         if(UseVR)
         {
-
-            Debug.Log($"-VR 조작상태-");
-
             if(OVRInput.GetDown(OVRInput.Button.Four))
             {
                 SelectKey = true;
@@ -129,14 +124,14 @@ public class TitleUI : MonoBehaviour
 
         if(gameObject.activeSelf)
         {
-            MainCamera.SetActive(true);
+            VRCamera.SetActive(true);
         }
 
-        if(UseVR)
+        if(UseVR == false)
         {
-            VRUI.UseVR = UseVR;
-            VRTitleUI.SetActive(true);
-            MainCamera.SetActive(false);
+            MainUI.UseVR = UseVR;
+            MainTitleUI.SetActive(true);
+            VRCamera.SetActive(false);
             gameObject.SetActive(false);
         }
 

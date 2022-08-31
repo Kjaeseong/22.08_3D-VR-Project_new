@@ -31,8 +31,9 @@ public class PlayerInput : MonoBehaviour
     public bool Num4;
     public bool Num5;
 
-    // Pause
+    // UI
     public bool P;
+    public bool Enter;
 
 
     // Item Slot Select For VR
@@ -83,7 +84,7 @@ public class PlayerInput : MonoBehaviour
         PlayerMove();
         Controll();
         Item();
-        PauseUI();
+        UI();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -93,7 +94,7 @@ public class PlayerInput : MonoBehaviour
         VR_PlayerMove();
         VR_Controll();
         VR_Item();
-        VR_PauseUI();
+        VR_UI();
     }
 
 
@@ -127,9 +128,10 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))        { Space = true; }   else { Space = false; }
     }
 
-    void PauseUI()
+    void UI()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
+        if (Input.GetMouseButtonDown(0)) { Enter = true; } else { Enter = false; }
     }
 
 
@@ -169,17 +171,32 @@ public class PlayerInput : MonoBehaviour
     {
         if(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) >= 0.5)
         {
+            LShift = true;
             Debug.Log($"-뛰기 버튼 눌림-");
+        }
+        else
+        {
+            LShift = false;
         }
 
         if(OVRInput.GetDown(OVRInput.Button.Two))
         {
+            F = true;
             Debug.Log($"-손전등 눌림-");
+        }
+        else
+        {
+            F = false;
         }
 
         if(OVRInput.Get(OVRInput.Button.Four))
         {
-            Debug.Log($"-상호작용/선택 키 눌림-");
+            Space = true;
+            Debug.Log($"-상호작용키 눌림-");
+        }
+        else
+        {
+            Space = false;
         }
 
     }
@@ -187,20 +204,45 @@ public class PlayerInput : MonoBehaviour
     {
         if(OVRInput.GetDown(OVRInput.Button.One))
         {
+            VR_ScrollButton = true;
             Debug.Log($"-아이템 선택버튼 눌림-");
+        }
+        else
+        {
+            VR_ScrollButton = false;
         }
 
         if(OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) >= 0.5)
         {
+            VR_UseItem = true;
             Debug.Log($"-아이템 사용 버튼 눌림-");
+        }
+        else
+        {
+            VR_UseItem = false;
         }
 
     }
-    void VR_PauseUI()
+    void VR_UI()
     {
         if(OVRInput.GetDown(OVRInput.Button.Three))
         {
+            P = true;
             Debug.Log($"-Pause 버튼 눌림-");
+        }
+        else
+        {
+            P = false;
+        }
+
+        if(OVRInput.GetDown(OVRInput.Button.Start))
+        {
+            Enter = true;
+            Debug.Log($"-스타트(엔터)버튼 눌림-");
+        }
+        else
+        {
+            Enter = false;
         }
 
     }
