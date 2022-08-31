@@ -9,7 +9,7 @@ public class TitleUI : MonoBehaviour
     public TitleBanner _Start;
     public TitleBanner Exit;
 
-    public GameObject VRTitleUI;
+    public GameObject VRCamera;
     public GameObject MainCamera;
 
     public VRTitleUI VRUI;
@@ -126,18 +126,12 @@ public class TitleUI : MonoBehaviour
                 UseVR = true;
             }
         }
-
-        if(gameObject.activeSelf)
-        {
-            MainCamera.SetActive(true);
-        }
-
+        
         if(UseVR)
         {
             VRUI.UseVR = UseVR;
-            VRTitleUI.SetActive(true);
+            VRCamera.SetActive(true);
             MainCamera.SetActive(false);
-            gameObject.SetActive(false);
         }
 
     }
