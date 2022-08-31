@@ -81,7 +81,7 @@ public class Canvas : MonoBehaviour
     {
         _invenUI.SelectSlot = _inventory.SelectItem;
         _invenUI.InventorySize = _inventory.list.Count;
-        _compass.transform.rotation = Quaternion.Euler(0f, 0f, _player.transform.eulerAngles.y);
+        _compass.transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, _player.transform.eulerAngles.y);
         _invenUI.TotalItem = _inventory.TotalItem;
 
 
