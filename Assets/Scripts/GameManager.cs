@@ -14,7 +14,11 @@ public class GameManager : SingletonBehaviour<GameManager>
     public GameObject Player;
     public GameObject Zombie;
     public GameObject Building;
+/*
+
     public GameObject IngameUI;
+*/
+
     public GameObject Map;
 
 
@@ -49,8 +53,12 @@ public class GameManager : SingletonBehaviour<GameManager>
         _pool[3] = Instantiate(Zombie) as GameObject;
         _pool[3].name = "ZombieSpawner";
 
+/*
+
         _pool[4] = Instantiate(IngameUI) as GameObject;
         _pool[4].name = "IngameUI";
+*/
+
     }
 
 
