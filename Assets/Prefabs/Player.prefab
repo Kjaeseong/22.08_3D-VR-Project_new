@@ -3922,10 +3922,8 @@ MonoBehaviour:
   Num3: 0
   Num4: 0
   Num5: 0
-  P: 0
   Enter: 0
-  VR_UseItem: 0
-  VR_ScrollNum: 0
+  P: 0
 --- !u!1 &2623225509001680019
 GameObject:
   m_ObjectHideFlags: 0
@@ -4587,7 +4585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5519923749601661250
 Transform:
   m_ObjectHideFlags: 0
