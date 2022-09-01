@@ -162,10 +162,14 @@ PlayerSettings:
 =======
     Android: com.unity3d.vikingVillageURP
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 95ca876 (Test: Oculus Input Test Code)
 =======
 >>>>>>> 95ca876 (Test: Oculus Input Test Code)
     Standalone: com.DefaultCompany.22.08-3D-VR-Project
+=======
+    Standalone: com.UnityTechnologies.VikingVillage
+>>>>>>> parent of 95ca876 (Test: Oculus Input Test Code)
     iPhone: com.Company.ProductName
     tvOS: com.Company.ProductName
   buildNumber:
@@ -824,8 +828,8 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 3
   m_MobileRenderingPath: 1
-  metroPackageName: SkyshopProject1
-  metroPackageVersion: 1.0.0.0
+  metroPackageName: Skyshop Project 1
+  metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -833,7 +837,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: Skyshop Project 1
   wsaImages: {}
-  metroTileShortName: 22.08_3D,VR Project
+  metroTileShortName: 
   metroTileShowName: 1
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0

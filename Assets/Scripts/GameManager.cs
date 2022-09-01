@@ -37,42 +37,8 @@ public class GameManager : SingletonBehaviour<GameManager>
     {
         base.Awake();
         RoadGameDate();
-
-
-        /*
-        ChangeController();
-
-
-*/
     }
 
-
-/*
-    public void ChangeController()
-    {
-        _camera = Player.GetComponentInChildren<GameObject>();
-        _ovrCamera = Player.GetComponentInChildren<GameObject>();
-        _input = Player.GetComponent<PlayerInput>();
-
-        if(keyboard_Controll == true)
-        {
-            _camera.SetActive(true);
-            _ovrCamera.SetActive(false);
-            
-        }
-        else
-        {
-            _camera.SetActive(false);
-            _ovrCamera.SetActive(true);
-            if(_input.Space == true)
-            {
-                keyboard_Controll = true;
-            }
-        }
-    }
-
-
-*/
 
 
     public void RoadGameDate()

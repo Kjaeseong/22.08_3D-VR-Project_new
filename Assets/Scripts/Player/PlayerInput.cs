@@ -7,55 +7,53 @@ public class PlayerInput : MonoBehaviour
     public GameObject MainCam;
     public GameObject VRCam;
     
-
     public float Rotate_x;
     public float Rotate_y;
+
+    // Move
     public float x;
     public float z;
-
-
-    // Action
     public bool F;
     public bool LShift;
     public bool Space;
+
+    //Item
     public bool Num1;
     public bool Num2;
     public bool Num3;
     public bool Num4;
     public bool Num5;
-    public bool P;
     public bool Enter;
 
+    // Pause
+    public bool P;
+
+
     void Update()
-    {   
-        KeyboardInput();
+    {
+        PlayerRotate();
+        PlayerMove();
+        Controll();
+        Item();
+        PauseUI();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void KeyboardInput()
-    {
-        keyboard_PlayerRotate();
-        keyboard_PlayerMove();
-        keyboard_Controll();
-        keyboard_Item();
-        keyboard_PauseUI();
-    }
-
-    void keyboard_PlayerMove()
+    void PlayerMove()
     {
         x = Input.GetAxis("Horizontal");
         z = Input.GetAxis("Vertical");
 
     }
 
-    void keyboard_PlayerRotate()
+    void PlayerRotate()
     {
         Rotate_y = Input.GetAxis("Mouse X");
         Rotate_x = -Input.GetAxis("Mouse Y");
 
     }
 
-    void keyboard_Item()
+    void Item()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))   { Num1 = true; }    else { Num1 = false; }
         if (Input.GetKeyDown(KeyCode.Alpha2))   { Num2 = true; }    else { Num2 = false; }
@@ -64,17 +62,21 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha5))   { Num5 = true; }    else { Num5 = false; }
     }
 
-    void keyboard_Controll()
+    void Controll()
     {
         if (Input.GetKeyDown(KeyCode.F))        { F = true; }       else { F = false; }
         if (Input.GetKey(KeyCode.LeftShift))    { LShift = true; }  else { LShift = false; }
         if (Input.GetKey(KeyCode.Space))        { Space = true; }   else { Space = false; }
     }
 
-    void keyboard_PauseUI()
+    void PauseUI()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
         if (Input.GetMouseButtonDown(0)) { Enter = true; } else { Enter = false; }
     }
+
+
+
+
 
 }
