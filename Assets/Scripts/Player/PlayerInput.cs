@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour
     public bool F;
     public bool LShift;
     public bool Space;
+    public bool MouseL;
 
     //Item
     public bool Num1;
@@ -35,7 +36,10 @@ public class PlayerInput : MonoBehaviour
         Controll();
         Item();
         PauseUI();
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+        
     }
 
     void PlayerMove()
@@ -65,12 +69,15 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))        { F = true; }       else { F = false; }
         if (Input.GetKey(KeyCode.LeftShift))    { LShift = true; }  else { LShift = false; }
         if (Input.GetKey(KeyCode.Space))        { Space = true; }   else { Space = false; }
+        if (Input.GetMouseButton(0))            { MouseL = true; }  else { MouseL = false; }
     }
 
     void PauseUI()
     {
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) { P = true; } else { P = false; }
     }
+
+
 
 
 

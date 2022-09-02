@@ -159,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2543156116639925512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -17.9}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -342,6 +342,7 @@ MonoBehaviour:
   F: 0
   LShift: 0
   Space: 0
+  MouseL: 0
   Num1: 0
   Num2: 0
   Num3: 0
@@ -828,6 +829,7 @@ GameObject:
   - component: {fileID: 8341615142093199442}
   - component: {fileID: 8341615142093199443}
   - component: {fileID: 8341615142093199440}
+  - component: {fileID: 2053703724609263238}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: Player
@@ -918,6 +920,21 @@ MonoBehaviour:
   Player: {fileID: 2543156116639925510}
   Input: {fileID: 778731204222620560}
   Hips: {fileID: 3835105088608387316}
+--- !u!114 &2053703724609263238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8341615142093199404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6033dd0ad161ce498f10cf11811c2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MissionObject: {fileID: 0}
+  MissionObjectOutLine: {fileID: 0}
+  MaxDistance: 3
 --- !u!1 &8341615142926507439
 GameObject:
   m_ObjectHideFlags: 0
