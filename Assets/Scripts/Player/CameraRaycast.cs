@@ -18,7 +18,7 @@ public class CameraRaycast : MonoBehaviour
         _input = GetComponentInParent<PlayerInput>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         //
@@ -34,13 +34,13 @@ public class CameraRaycast : MonoBehaviour
                 MissionObjectOutLine = MissionObject.GetComponent<Outline>();
                 MissionObjectOutLine.enabled = true;
                     
-                
+                // Inside Raycast.
+                // 1. Reference null
+                //
 
                 if(_input.MouseL)
                 {
-
-                    Debug.Log($"--------");
-
+                    Debug.Log("레이캐스트 / 입력");
                 }
 
             }

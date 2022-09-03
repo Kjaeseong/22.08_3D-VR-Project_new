@@ -783,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioList:
   - {fileID: 8300000, guid: c65e8dfb69476444483b3cf51f104781, type: 3}
-  - {fileID: 8300000, guid: ea541afa5b90a1348837495994491c05, type: 3}
+  - {fileID: 8300000, guid: b922c53ce19550a4d95ecd2852b57cf7, type: 3}
 --- !u!1 &3709364456639128931
 GameObject:
   m_ObjectHideFlags: 0
